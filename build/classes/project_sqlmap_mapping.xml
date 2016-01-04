@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xydd.dao.MainDao">
+
+	<select id="test" resultType="HashMap" >
+		SELECT *
+		  FROM test
+	</select>
+	
+	<select id="searchTeacherByOpenId" resultType="HashMap" >
+		SELECT *
+		  FROM TEACHER where OPENID=#{OPENID}
+	</select>
+	<select id="searchSchoolByType" resultType="HashMap" >
+		SELECT distinct SCHOOL_NAME,SCHOOL_TYPE
+		  FROM SCHOOL_CLASS_RELA where SCHOOL_TYPE=#{SCHOOL_TYPE}
+	</select>
+	<select id="searchSchoolByParam" resultType="HashMap" >
+		SELECT distinct SCHOOL_NAME,SCHOOL_TYPE
+		  FROM SCHOOL_CLASS_RELA where 1=1
+		<if test="SCHOOL_TYPE !=null">
+		  and SCHOOL_TYPE=#{SCHOOL_TYPE}
+		</if>  
+		<if test="SCHOOL_NAME !=null">
+		  and SCHOOL_NAME like concat(concat('%',#{SCHOOL_NAME}),'%')
+		</if> 
+	</select>
+	
+	<select id="searchClassByParam" resultType="HashMap" >
+		SELECT *
+		  FROM SCHOOL_CLASS_RELA where 1=1
+		<if test="SCHOOL_TYPE !=null">
+		  and SCHOOL_TYPE=#{SCHOOL_TYPE}
+		</if>  
+		<if test="SCHOOL_NAME !=null">
+		  and SCHOOL_NAME like concat(concat('%',#{SCHOOL_NAME}),'%')
+		</if> 
+		<if test="CURRENT_LEVEL !=null">
+		  and CURRENT_LEVEL=#{CURRENT_LEVEL}
+		</if> 
+	</select>
+	
+	<insert id="addWeiXinUser" parameterType="java.util.Map">
+	    INSERT INTO WX_USER(OPENID,NICKNAME,SEX,CITY,COUNTRY,PROVINCE,HEADIMGURL) 
+	    	VALUES(#{OPENID},#{NICKNAME},#{SEX},#{CITY},#{COUNTRY},#{PROVINCE},#{HEADIMGURL});
+	</insert>
+	
+	<insert id="addTeacher" parameterType="java.util.Map">
+	    INSERT INTO TEACHER(OPENID,NAME,MOBILE) 
+	    	VALUES(#{OPENID},#{NAME},#{MOBILE});
+	</insert>
+	
+	<insert id="addTeacherClass" parameterType="java.util.Map">
+	    INSERT INTO TEACHER_CLASS_RELA(TEACHER_OPENID,CLASS_ID,TEACHER_TYPE,TEACH_LESSON) 
+	    	VALUES(#{TEACHER_OPENID},#{CLASS_ID},#{TEACHER_TYPE},#{TEACH_LESSON});
+	</insert>
+
+	<select id="searchSchoolClass" resultType="HashMap" >
+		SELECT *
+		  FROM SCHOOL_CLASS_RELA
+	</select>
+
+	<select id="searchStudentList" resultType="HashMap" >
+		SELECT *
+		  FROM STUDENT WHERE CLASS_ID = #{CLASS_ID}
+	</select>
+	
+	<delete id="delSchoolClass">
+		DELETE
+		  FROM SCHOOL_CLASS_RELA WHERE CLASS_ID = #{CLASS_ID}
+	</delete>
+	
+	<select id="classStudentManager" resultType="HashMap" >
+		SELECT *
+		  FROM SCHOOL_CLASS_RELA
+	</select>
+	
+	<insert id="addClass" parameterType="java.util.Map">
+	    INSERT INTO SCHOOL_CLASS_RELA(SCHOOL_NAME,CLASS_NAME,CURRENT_LEVEL) 
+	    	VALUES(#{SCHOOL_NAME},#{CLASS_NAME},#{CURRENT_LEVEL});
+	</insert>
+	
+	<insert id="addStudent" parameterType="java.util.Map">
+	    INSERT INTO STUDENT(CLASS_ID,STUDENT_NO,NAME) 
+	    	VALUES(#{CLASS_ID},#{STUDENT_NO},#{NAME});
+	</insert>
+	
+	<select id="perfomanceManager" resultType="HashMap" >
+		SELECT A.CLASS_ID,A.EXAM_TIME,A.EXAM_NAME,A.COURSE_NAME,B.SCHOOL_NAME,B.CLASS_NAME
+		  FROM PERFOMANCE A
+		  LEFT JOIN
+		       SCHOOL_CLASS_RELA B
+		    ON A.CLASS_ID = B.CLASS_ID
+	</select>
+	
+	<select id="searchPerfomanceList" resultType="HashMap" parameterType="java.util.Map">
+		SELECT B.NAME,A.EXAM_SCORE FROM SCORE A
+			LEFT JOIN
+			STUDENT B
+			ON A.CLASS_ID = B.CLASS_ID
+			AND A.STUDENT_NO = B.STUDENT_NO
+			WHERE A.CLASS_ID = #{CLASS_ID} 
+			  AND A.COURSE_NAME = #{COURSE_NAME}
+			  AND A.EXAM_NAME = #{EXAM_NAME}
+	</select>
+	
+	<delete id="delPerfomance" parameterType="java.util.Map">
+		DELETE FROM PERFOMANCE WHERE CLASS_ID = #{CLASS_ID} AND EXAM_NAME =#{EXAM_NAME} AND COURSE_NAME =#{COURSE_NAME}
+	</delete>
+	
+	<insert id="addPerfomance" parameterType="java.util.Map">
+	    INSERT INTO PERFOMANCE(CLASS_ID,COURSE_NAME,EXAM_NAME,EXAM_TIME) 
+	    	VALUES(#{CLASS_ID},#{COURSE_NAME},#{EXAM_NAME},#{EXAM_TIME});
+	</insert>
+</mapper>

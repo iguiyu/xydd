@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<!-- ===================================================================== -->
+	<!--  以下是appender的定义                                                 -->
+	<!-- ===================================================================== -->
+	<appender name="PROJECT"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="/data/logs/zhiyuan123.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="GBK" />
+		<param name="threshold" value="info" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%n%d %-5p %c{2} - [%X{loginUser}@%X{remoteAddr} - %X{method} %X{requestURIWithQueryString}] %nUserAgent: %X{userAgent}%nReferrer: %X{referrer}%n%m%n" />
+		</layout>
+	</appender>
+	<appender name="PROJECT-DEBUG"
+		class="org.apache.log4j.FileAppender">
+		<param name="file" value="/data/logs/zhiyuan123-debug.log" />
+		<param name="append" value="false" />
+		<param name="encoding" value="GBK" />
+		<param name="threshold" value="info" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%n%d %-5p %c{2} - [%X{loginUser}@%X{remoteAddr} - %X{method} %X{requestURIWithQueryString}] %nUserAgent: %X{userAgent}%nReferrer: %X{referrer}%n%m%n" />
+		</layout>
+	</appender>
+	<appender name="IBATIS"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="/data/logs/zhiyuan123-ibatis.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="GBK" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d %-5p %c{2} - %m%n" />
+		</layout>
+	</appender>
+    <!-- 记录数据里异常的脏数据 -->
+	<appender name="dbDataExceptionAppender" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="/data/logs/zhiyuan123-db-data-exception.log"/>
+        <param name="append" value="true"/>
+        <param name="encoding" value="GBK"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+	<!-- ===================================================================== -->
+	<!--  以下是logger的定义                                                   -->
+	<!-- ===================================================================== -->
+	<logger name="org.apache.ibatis" additivity="false">
+		<level value="WARN" />
+		<appender-ref ref="IBATIS" />
+	</logger>
+	<logger name="org.mybatis" additivity="false">
+		<level value="WARN" />
+		<appender-ref ref="IBATIS" />
+	</logger>
+	<logger name="java.sql" additivity="false">
+		<level value="WARN" />
+		<appender-ref ref="IBATIS" />
+	</logger>
+	<logger name="dbDataException" additivity="true">
+        <level value="INFO"/>
+        <appender-ref ref="dbDataExceptionAppender"/>
+    </logger>
+	<!-- ===================================================================== -->
+	<!--  Root logger的定义                                                    -->
+	<!-- ===================================================================== -->
+	<root>
+		<level value="ALL" />
+		<appender-ref ref="PROJECT" />
+		<appender-ref ref="PROJECT-DEBUG" />
+		<appender-ref ref="IBATIS" />
+	</root>
+</log4j:configuration>

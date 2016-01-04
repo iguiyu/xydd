@@ -1,0 +1,478 @@
+/* 表单 */
+.ui-form {
+  font-size: 12px;
+  line-height: 1.5;
+  list-style: none;
+}
+.ui-form-explain {
+  height: 18px;
+  padding: 8px 0 0;
+  margin: 0;
+  font-size: 12px;
+  color: #b2b2b2;
+}
+.ui-form-other {
+  margin-left: 8px;
+}
+.ui-form-text {
+  display: inline-block;
+  margin-top: 6px;
+  *display: inline;
+  *zoom: 1;
+}
+.ui-form-item {
+  position: relative;
+  padding: 0 5px 32px 100px;
+  zoom: 1;
+}
+.ui-form-item:after {
+  display: block;
+  visibility: hidden;
+  height: 0;
+  clear: both;
+  content: ".";
+}
+.ui-form-item input {
+  vertical-align: middle;
+}
+.ui-form-item .ui-input {
+  vertical-align: middle;
+  color: #595959;
+  *vertical-align: -5px;
+}
+.ui-form-item-error .ui-input,
+.ui-form-item-error .ui-textarea {
+  color: #f00;
+  border: 1px #f00 solid;
+}
+.ui-form-item-error .ui-input-reset {
+  color: #000;
+  border: 1px #9c9c9c solid;
+}
+.ui-form-item-error .ui-form-explain {
+  color: #ff5243;
+}
+.ui-label {
+  float: left;
+  width: 100px;
+  padding-top: 2px;
+  margin-left: -124px;
+  font-size: 18px;
+  text-align: right;
+}
+.ui-form-required {
+  margin-right: 6px;
+  font-family: SimSun;
+  font-size: 14px;
+  color: #f00;
+}
+input.ui-checkbox {
+  vertical-align: baseline;
+}
+.ui-input {
+  width: 155px;
+  height: 18px;
+  padding: 5px 9px;
+  margin-right: 33px;
+  font-size: 14px;
+  line-height: 18px;
+  color: #595959;
+  border: 1px solid #c1c1c1;
+}
+.ui-input:hover,
+.ui-textarea:hover,
+.ui-input-hover {
+  border: 1px #727272 solid;
+  border-top-color: #808080;
+}
+.ui-input:focus,
+.ui-textarea:focus,
+.ui-input-focus {
+  color: #595959;
+  border: 1px #07f solid;
+  box-shadow: 0 0 3px #8cddff;
+}
+.ui-textarea {
+  padding: 1px 3px 0 4px;
+  overflow: auto;
+  font-family: Arial;
+  font-size: 12px;
+  line-height: 15px;
+  border: 1px #9c9c9c solid;
+}
+.ui-select {
+  display: block;
+  width: 155px;
+  height: 18px;
+  padding: 5px 9px;
+  margin: 0;
+  margin-right: 33px;
+  box-sizing: content-box;
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: none;
+  color: #595959;
+  border: 1px solid #c1c1c1;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  background-color: #fff;
+  background-image: none;
+  -webkit-appearance: none;
+}
+/* head */
+.header {
+  position: relative;
+  z-index: 99;
+  min-width: 1200px;
+  padding: 10px 0 16px;
+  background-color: #fff;
+}
+.header .logo {
+  display: block;
+  width: 403px;
+  height: 53px;
+  background: url(../img/logo.png) no-repeat;
+}
+.header .login-btn {
+  display: inline-block;
+  height: 32px;
+  padding: 0 23px;
+  margin-top: 14px;
+  font-size: 16px;
+  line-height: 32px;
+  text-align: center;
+  text-decoration: none;
+  color: #22ac38;
+  border: 1px solid #22ac38;
+  border-radius: 4px;
+}
+.header .personal-info {
+  padding-top: 22px;
+  font-size: 14px;
+  color: #999;
+}
+.header .personal-info strong {
+  color: #333;
+}
+.header .personal-info .logout {
+  display: inline-block;
+  margin-left: 25px;
+  text-decoration: none;
+  color: #333;
+}
+.header .personal-info .logout:hover {
+  text-decoration: underline;
+}
+/* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  padding: 0;
+  margin: 0;
+}
+/* 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+/* HTML5 媒体文件跟 img 保持一致 */
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+/* 要注意表单元素并不继承父级 font 的问题 */
+body,
+button,
+input,
+select,
+textarea {
+  font: 12px/1.5 "Microsoft YaHei", tahoma, arial, "Hiragino Sans GB";
+}
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+/* 去掉各Table  cell 的边距并让其边重合 */
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+/* IE bug fixed: th 不继承 text-align*/
+th {
+  text-align: inherit;
+}
+/* 去除默认边框 */
+fieldset,
+img {
+  border: 0;
+}
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe {
+  display: block;
+}
+/* 去掉 firefox 下此元素的边框 */
+abbr,
+acronym {
+  font-variant: normal;
+  border: 0;
+}
+/* 一致的 del 样式 */
+del {
+  text-decoration: line-through;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+var {
+  font-style: normal;
+  font-weight: 500;
+}
+/* 去掉列表前的标识, li 会继承 */
+ol,
+ul {
+  list-style: none;
+}
+/* 对齐是排版最重要的因素, 别让什么都居中 */
+caption,
+th {
+  text-align: left;
+}
+/* 来自yahoo, 让标题都自定义, 适应多个系统应用 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: 500;
+}
+q:before,
+q:after {
+  content: "";
+}
+/* 统一上标和下标 */
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+/* 正常链接 未访问 */
+a:link {
+  color: #00a0e9;
+}
+/* 鼠标悬停 */
+a:hover {
+  text-decoration: underline;
+  color: #00a0e9;
+}
+a:visited {
+  color: #00a0e9;
+}
+/* 默认不显示下划线，保持页面简洁 */
+ins,
+a {
+  text-decoration: none;
+}
+/* 清理浮动 */
+.fn-clear:after,
+.clear:after {
+  display: block;
+  visibility: hidden;
+  height: 0;
+  clear: both;
+  font-size: 0;
+  content: " ";
+}
+.fn-clear,
+.clear {
+  zoom: 1;
+  /* for IE6 IE7 */
+}
+/* 隐藏, 通常用来与 JS 配合 */
+body .fn-hide,
+body .hide {
+  display: none;
+}
+/* 设置内联, 减少浮动带来的bug */
+.fn-left,
+.fn-right {
+  display: inline;
+}
+.fn-left {
+  float: left;
+}
+.fn-right {
+  float: right;
+}
+.fn-out-body {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+/* 单行文字溢出时出现省略号，需设定宽度 */
+.fn-text-overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.fn-vhidden {
+  visibility: hidden;
+}
+.fn-rmb {
+  margin-right: 3px;
+  font-family: arial;
+  font-style: normal;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+.fn-pr {
+  position: relative;
+}
+.fn-st {
+  font-family: "宋体";
+}
+/* 容器 */
+.container {
+  position: relative;
+  width: 1200px;
+  margin: 0 auto;
+}
+.content {
+  min-width: 1200px;
+  min-height: 800px;
+}
+/* 按钮 */
+a.btn,
+.btn {
+  display: inline-block;
+  height: 34px;
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 34px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #dcdcdc;
+  background: url(../img/btn_bg.png) repeat-x;
+}
+/* foot */
+.footer {
+  width: 100%;
+  height: 57px;
+  min-width: 1200px;
+  line-height: 57px;
+  text-align: center;
+  color: #fff;
+  background-color: #323232;
+}
+/*浮层*/
+.layer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+.layer-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #fff;
+}
+.layer-box .box-title {
+  height: 87px;
+  padding: 0 30px 0 40px;
+  font-size: 30px;
+  line-height: 87px;
+  color: #000;
+  background-color: #90d59b;
+}
+/* icon */
+.i-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background: url(../img/close.png) no-repeat;
+}

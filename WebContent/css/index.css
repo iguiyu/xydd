@@ -1,0 +1,81 @@
+/* 主页 */
+.banner {
+  width: 1900;
+  height: 580px;
+  min-width: 1200px;
+  overflow: hidden;
+  text-align: center;
+  background: url(../img/banner.jpg) no-repeat center top;
+}
+.intro {
+  padding: 86px 0 96px;
+}
+.intro li {
+  position: relative;
+  float: left;
+  padding-top: 6px;
+  padding-left: 118px;
+  color: #22ac38;
+  *display: inline;
+  *zoom: 1;
+}
+.intro li.middle-li {
+  margin-right: 175px;
+  margin-left: 185px;
+}
+.intro li dt {
+  font-size: 26px;
+}
+.intro li dd {
+  font-size: 20px;
+}
+/* layer */
+.layer-box.login-box {
+  width: 740px;
+  margin-top: -220px;
+  margin-left: -370px;
+}
+.layer-box.login-box .box-content {
+  padding: 70px 56px 93px;
+}
+.layer-box.login-box dl {
+  width: 260px;
+  padding-right: 70px;
+  margin-top: 19px;
+  margin-right: 80px;
+  border-right: 1px solid #e5e5e5;
+}
+.layer-box.login-box dt {
+  margin-bottom: 15px;
+}
+.layer-box.login-box dd {
+  font-size: 26px;
+  color: #5fb287;
+}
+/* icon */
+.i-educate,
+.i-teacher,
+.i-student {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  background: url(../img/icon.png) no-repeat;
+}
+.i-educate {
+  background-position: 0 0;
+}
+.i-teacher {
+  background-position: -120px 0;
+}
+.i-student {
+  background-position: -240px 0;
+}
+.i-ok {
+  display: inline-block;
+  width: 65px;
+  height: 65px;
+  background: url(../img/ok.png) no-repeat;
+}

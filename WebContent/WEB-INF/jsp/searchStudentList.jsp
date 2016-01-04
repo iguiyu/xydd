@@ -1,0 +1,139 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>校园叮咚教育平台</title>
+	<link rel="shortcut icon" href="/favicon.ico"/>
+	<link rel="bookmark" href="/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="css/global.css">
+	<link rel="stylesheet" type="text/css" href="css/center.css">
+</head>
+<%
+List<Map> students=(List<Map>)request.getAttribute("students");
+%>
+<%
+String className=new String((request.getParameter("className")).getBytes("iso-8859-1"),"utf-8");
+String schoolName=new String((request.getParameter("schoolName")).getBytes("iso-8859-1"),"utf-8");
+String classID=request.getParameter("classID");
+%>
+<body>
+	<header class="header">
+		<div class="fn-clear container">
+			<div class="fn-left">
+				<a href="###" class="logo"></a>
+			</div>
+			<div class="fn-right personal-info">
+				欢迎您，<strong>test</strong>
+				<a href="###" class="logout">退出</a>
+			</div>
+		</div>
+	</header>
+	<article class="content">
+		<nav class="top-nav">
+			<ul class="fn-clear container" id="nav_link">
+				<li class="active js-nav">
+					<a href="/xydd/classStudentManager.shtml">学生管理</a>
+				</li>
+				<li class="js-nav">
+					<a href="/xydd/classStudentManager.shtml">考试成绩</a>
+				</li>
+			</ul>
+		</nav>
+		<div class="container table-content">
+		学校：<%=schoolName %>   班级：<%=className%>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>学号</th>
+						<th>姓名</th>
+						<th>学号</th>
+						<th>姓名</th>
+						<th>学号</th>
+						<th>姓名</th>
+					</tr>
+				</thead>
+				<tbody>
+			 <tr>
+				 <%
+				 if(students!=null&&students.size()>0)
+				 {
+					 
+					for(int i=1;i<students.size()+1;i++)
+					{
+						Map s=students.get(i-1);
+						%>
+						<td width="150"><%=s.get("STUDENT_ID") %></td><td width="150"><%=s.get("NAME") %></td>
+						<%
+						if(i%3==0){
+							%>
+							</tr><tr>
+							<%
+						} 
+					}
+				}
+				%>	
+				</tbody>
+			</table>
+			<div class="text-right">
+				<a href="javascript:;" class="btn" id="add_btn">添加学生</a>
+			</div>
+		</div>
+	</article>
+	<footer class="footer">
+		<div class="container">
+			Copyright©2015-2015 Tenpay All Rights Reserved 校园叮咚教育 版权所有
+		</div>
+	</footer>
+
+	<!-- 新增考试成绩弹层 -->
+	<div class="layer fn-hide" id="add_layer">
+		<div class="layer-box add-box">
+			<div class="box-title">
+				添加学生
+			</div>
+			<div class="box-content fn-clear">
+				<form class="ui-form" name="" method="post" action="/xydd/addStudent.shtml">
+			        <div class="ui-form-item ui-form-item-error ">
+			            <label for="" class="ui-label">
+			            	学号
+			            </label>
+			            <input class="ui-input" type="text" name="stuNo">
+			            <input class="ui-input" type="hidden" name="classID" value="<%=classID %>">
+			            <input class="ui-input" type="hidden" name="className" value="<%=className %>">
+			            <input class="ui-input" type="hidden" name="schoolName" value="<%=schoolName %>">
+	            	</div>
+			        <div class="ui-form-item ui-form-item-error ">
+			            <label for="" class="ui-label">
+			            	学生姓名
+			            </label>
+			            <input class="ui-input" type="text" name="stuName">
+	            	</div>
+			        <div class="text-center">
+			        	<input type="submit" class="btn" value="保存">
+			        	<button type="button" class="btn js-dismiss">取消</button>
+			        </div>
+				</form>
+			   </div>
+			</div>
+		</div>
+
+
+	<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(".js-nav").click(function(){
+	        $(this).addClass("active");
+	        $(this).siblings().removeClass("active");
+	    });
+
+		$("#add_btn").click(function(){
+			$("#add_layer").removeClass("fn-hide");
+		});
+
+		$(".js-dismiss").click(function(){
+			$("#add_layer").addClass("fn-hide");
+		});
+
+	</script>
+</body>
+</html>

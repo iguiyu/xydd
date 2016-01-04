@@ -1,0 +1,78 @@
+/* 导航 */
+.top-nav {
+  min-width: 1200px;
+  background-color: #22ac38;
+}
+.top-nav ul {
+  padding-top: 2px;
+  border-bottom: 1px solid #0f8522;
+}
+.top-nav li {
+  float: left;
+}
+.top-nav li a {
+  display: block;
+  height: 42px;
+  padding: 0 32px;
+  margin-bottom: -1px;
+  font-size: 18px;
+  line-height: 42px;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid #22ac38;
+  border-bottom: 0;
+}
+.top-nav li.active a {
+  font-size: 18px;
+  color: #333;
+  border: 1px solid #0f8522;
+  border-bottom: 1px solid #fff;
+  background-color: #fff;
+}
+/* 表格 */
+.table-content {
+  padding: 30px 0;
+}
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.table th {
+  height: 38px;
+  background-color: #e9e9e9;
+}
+.table td,
+.table th {
+  text-align: center;
+  border: 1px solid #dcdcdc;
+}
+.table td {
+  padding: 18px 0;
+}
+/* 新增成绩弹层 */
+.layer-box.add-box {
+  width: 752px;
+  margin-top: -252px;
+  margin-left: -376px;
+}
+.layer-box.add-box .box-title {
+  height: 60px;
+  font-size: 22px;
+  line-height: 60px;
+}
+.layer-box.add-box .box-content {
+  padding: 84px 56px 62px 70px;
+}
+.layer-box.add-box .btn {
+  margin: 0 42px;
+}
+/* icon */
+.i-arrow {
+  position: absolute;
+  top: 12px;
+  right: 47px;
+  display: inline-block;
+  width: 12px;
+  height: 6px;
+  background: url(../img/arrow.png) no-repeat;
+}
